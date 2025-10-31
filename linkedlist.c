@@ -5,7 +5,7 @@ struct node
 	int data;
 	struct node *link;
 };
-struct node *header;
+struct node *header=NULL;
 
 /*void createnode(int item)
 {
@@ -20,10 +20,11 @@ void insertAtFront(int item)
 	struct node *newnode;
 	newnode=(struct node *)malloc(sizeof(struct node));
 	newnode->data=item;
-	newnode->link=NULL;
+	newnode->link=header;
+	header=newnode;
 	//struct *node newnode;
 	//newnode=createNode(item);
-	if(header==NULL)
+	/*if(header==NULL)
 	{
 		header=newnode;
 	}
@@ -31,7 +32,7 @@ void insertAtFront(int item)
 	{
 		newnode->link=header;
 		header=newnode;
-	}
+	}*/
 
 }
 void insertAtEnd(int item)
@@ -43,6 +44,7 @@ void insertAtEnd(int item)
 	if(header==NULL)
 	{
 		header=newnode;
+		return;
 	}
 	else
 	{
@@ -60,20 +62,38 @@ void insertAtEnd(int item)
 void insertAtAny(int item,int key)
 {
 	struct node *ptr,*ptr1;
-	while(ptr!=NULL)
+	while(ptr!=NULL && ptr->data!=key)
 	{
-		if(ptr->data==key)
+		ptr1=ptr;
+		ptr=ptr->link;
+	}
+		if(ptr==NULL)
 		{
-			newnode->data=item;
-			newnode->link=ptr->link;
-			ptr->link=newnode;
-			
+			printf("key not found,insertion not possible");
 		}
 		else
 		{
-			printf("key not found,insertion is not possible");
+			struct node *newnode;
+			newnode=(struct node *)malloc(sizeof(struct node));
+			newnode->data=item;
+			newnode->link=ptr;
+			ptr1->link=newnode;
 		}
-	
+		
+}
+void deleteAtFirst()
+{
+	struct node *ptr;
+	if(ptr==NULL)
+	{
+		printf("deletion is not possible");
+	}
+	else
+	{
+
+		ptr=header;
+		header=header->link;
+		free(ptr);
 	}
 }
 
@@ -98,8 +118,8 @@ int main()
 	insertAtFront(40);
 	insertAtEnd(50);
 	insertAtEnd(60);
+	insertAtAny(20,80);
+	deleteAtFirst();
 	traverselist();
-	
-	
 	return(0);
 }
