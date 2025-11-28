@@ -2,72 +2,68 @@
 #define max_size 5
 int s[max_size],top=-1;
 
-void	push(int	item)
+void push (int item)
 {
 	if(top>=max_size)
 	{
-		printf("Stack	is	full");
+		printf("stack is full");
 	}
 	else
 	{
 		top=top+1;
 		s[top]=item;
-		printf("%d	is	pushed	successfully",item);
+		printf("%d is pushed successfully",item);
 	}
 }
-void	pop()
+void pop()
 {
 	if(top<-1)
 	{
-		printf("Stack	is	empty");
+		printf("stack is empty");
 	}
 	else
 	{
-		printf("The poped	elemet	is	%d\n",s[top]);
+		printf("the poped element is %d\n",s[top]);
 		top=top-1;
 	}
-}	
-void	display()
-{
+}
+void display()
+{ 
+	int i;
 	if(top==-1)
 	{
-		printf("Stack	is	empty");
+		printf("stack is empty");
 		return;
 	}
-	for(int	i=0;i<=top;i++)
+	for(i=0;i<=top;i++)
 	{
-		printf("%d ",s[i]);
-
+		printf("%d\n",s[i]);
 	}
 	printf("\n");
-}	
-int	main()
+}
+int main()
 {
+		int item,choice;
 	do
 	{
-		int	item,choice;
-		printf("\n1.Push\n2.Pop\n3.Display\n4.Exit\n");
-		printf("Enter	your	choice:	");
+	
+		printf("\n1.push\n2.pop\n3.display\n4.exit\n");
+		printf("enter your choice:");
 		scanf("%d",&choice);
 		switch(choice)
 		{
-			case	1:printf("Enter	the	element:");
-							scanf("%d",&item);
-							push(item);
-							break;
-			case	2:pop();
-							break;
-			case	3:display();
-							break;
-			case	4:return(0);
-			default:printf("Enter	the	correct	choice.");
-							break;														
+			case 1:printf("enter the element:");
+					scanf("%d",&item);
+					push(item);
+					break;
+			case 2:pop();
+				    break;
+			case 3:display();
+				    break;
+			case 4:printf("exiting");
+					break;
+			default:printf("enter the valid choice");
 		}
-	}while(1);
+	}while(choice!=4);
 return(0);
 }
-		
-				
-
- 
- 		
