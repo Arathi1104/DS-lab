@@ -4,7 +4,7 @@
 -- Program: Practice Questions - 4
 -- 
 
-db.createCollection("employees");
+--db.createCollection("employees");
 
 --Q1.
 db.employees.insertOne({empid:101,name:'anila',department:'IT',salary:20000});
