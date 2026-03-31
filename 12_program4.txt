@@ -1,0 +1,54 @@
+﻿-- 
+-- Roll No:12-- Name: ARATHI K-- Program: Practice Questions – IV
+-- 
+---Employee Schema---
+	--db.createCollection("employees")
+
+--Q1.Insert a single employee document
+	
+db.employees.insertOne({empid:101,name:'anila',department:'IT',salary:20000});	--
+Q2.Insert 5 employee documents at once
+	
+db.employees.insertMany([{empid:102,name:'aruna',department:'Sales',salary:25000},{empid:103,name:'arun',department:'Finance',salary:30000},{empid:104,name:'amal',department:'Marketing',salary:35000},{empid:105,name:'jaya',department:'Sales',salary:40000},{empid:106,name:'hana',department:'Production',salary:38000}]);	--
+Q3.Increase salary of employee with empid=101 to 25000
+	db.Employee.updateOne({empid:101},{$set:{salary:25000}})	--
+
+Q4.Increase salary of employee in IT by 5000
+	db.Employee.updateOne({department:'IT'},{$inc:{salary:5000}})
+	--
+Q5.Add new key "experience" with value 2
+	db.Employee.updateMany({},{$set:{experience:2}})--
+
+Q6.Rename the key "department" to "dept"
+	db.Employee.updateMany({department:{$exists:true}},{$rename:{department:"dept"}})--
+
+Q7.Remove the key "experience" from all document
+	db.Employee.updateMany({},{$unset:{experience:0}})--
+
+Q8.Delete an employee with empid=101
+	db.Employee.deleteOne({empid:101})--
+
+Q9.Display all employees
+	db.Employee.find()
+
+--Q10.Display employees working in "IT" department
+	db.Employee.find({dept:'IT'})
+	--
+Q11.Display employees working with salary greaterthan 30000
+	db.Employee.find({salary:{$gt:30000}})
+	--
+Q12.Display only name and salary of all employees
+	db.Employee.find({},{name:1,salary:1})
+	--
+Q13.Display employee working in "Finance" or salary greater than 35000
+	db.Employee.find({$or: [{ dept: 'Finance' },{ salary: { $gt: 30000 } }]})
+	--
+Q14.Display employee where salary between 25000 and 40000 
+	db.Employee.find({salary:{$gte:25000,$lte:40000}})
+	--
+Q15.Sort employee by salary in descending order
+	db.Employee.find().sort({salary:-1})
+	--
+Q16.Display top two highest paid employees
+	db.Employee.find().sort({salary:-1}).limit(2)
+	
