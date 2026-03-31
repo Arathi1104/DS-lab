@@ -1,0 +1,45 @@
+-- 
+-- Roll No:12
+-- Name:Arathi K
+-- Program: Practice Questions - 4
+-- 
+
+db.createCollection("employees");
+
+--Q1.
+db.employees.insertOne({empid:101,name:'anila',department:'IT',salary:20000});
+
+--Q2.
+db.employees.insertMany([{empid:102,name:'aruna',department:'Sales',salary:25000},{empid:103,name:'arun',department:'Finance',salary:30000},{empid:104,name:'amal',department:'Marketing',salary:35000},{empid:105,name:'jaya',department:'Sales',salary:40000},{empid:106,name:'hana',department:'Production',salary:38000}]);
+
+--Q3.
+db.employees.updateOne({empid:101},{$set:{salary:25000}});
+
+--Q4.
+db.employees.updateOne({department:'IT'},{$inc:{salary:5000}});
+
+--Q5.
+db.employees.updateMany({},{$set:{experience:2}});
+
+--Q6.
+db.employees.updateMany({department:{$exists:true}},{$rename:{department:"dept"}});
+
+
+--Q7.
+db.employees.updateMany({},{$unset:{experience:0}});
+
+--Q8.
+ db.employees.deleteOne({empid:101});
+
+
+--Q9.
+db.employees.find();
+
+
+--Q10.
+db.employees.find({dept:'IT'});
+
+
+--Q11.
+ db.employees.find({salary:{$gt:30000}});
+
