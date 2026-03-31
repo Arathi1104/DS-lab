@@ -43,3 +43,7 @@ db.employees.find({dept:'IT'});
 --Q11.
  db.employees.find({salary:{$gt:30000}});
 
+--Q12
+db.employees.find({},{ name:1,salary:1});
+
+
